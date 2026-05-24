@@ -87,6 +87,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@aureliavale" },
+      { name: "twitter:title", content: "Aurelia Vale — Exclusive Creator Access" },
+      { name: "description", content: "Exclusive Glow creates a luxury, dark-themed creator link-in-bio website for showcasing exclusive content and branding." },
+      { property: "og:description", content: "Exclusive Glow creates a luxury, dark-themed creator link-in-bio website for showcasing exclusive content and branding." },
+      { name: "twitter:description", content: "Exclusive Glow creates a luxury, dark-themed creator link-in-bio website for showcasing exclusive content and branding." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1002e643-60cf-4356-b0b9-83edffc22991/id-preview-02681789--60fa9474-8e11-472e-9c42-68208ca4b385.lovable.app-1779637666858.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1002e643-60cf-4356-b0b9-83edffc22991/id-preview-02681789--60fa9474-8e11-472e-9c42-68208ca4b385.lovable.app-1779637666858.png" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
