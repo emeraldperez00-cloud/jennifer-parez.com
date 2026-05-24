@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Trash2, Plus, Save } from "lucide-react";
 
-type FieldDef<T> = {
-  key: keyof T & string;
+type FieldDef = {
+  key: string;
   label: string;
   type?: "text" | "textarea" | "number" | "url";
   placeholder?: string;
 };
 
-export function CrudManager<T extends { id: string }>({
+export function CrudManager<T extends { id: string } = { id: string } & Record<string, unknown>>({
   table,
   fields,
   defaults,
@@ -17,8 +17,8 @@ export function CrudManager<T extends { id: string }>({
   title,
 }: {
   table: "offers" | "social_links" | "testimonials" | "content_previews";
-  fields: FieldDef<T>[];
-  defaults: Omit<T, "id">;
+  fields: FieldDef[];
+  defaults: Record<string, unknown>;
   orderBy?: string;
   title: string;
 }) {
@@ -85,7 +85,7 @@ export function CrudManager<T extends { id: string }>({
                   {f.type === "textarea" ? (
                     <textarea
                       rows={2}
-                      value={(row[f.key] as string) ?? ""}
+                      value={((row as Record<string, unknown>)[f.key] as string) ?? ""}
                       onChange={(e) => updateRow(row.id, f.key, e.target.value)}
                       className="w-full px-3 py-2 rounded-lg bg-input border border-border focus:border-gold/60 focus:outline-none text-sm"
                     />
@@ -93,7 +93,7 @@ export function CrudManager<T extends { id: string }>({
                     <input
                       type={f.type === "number" ? "number" : "text"}
                       placeholder={f.placeholder}
-                      value={(row[f.key] as string | number) ?? ""}
+                      value={((row as Record<string, unknown>)[f.key] as string | number) ?? ""}
                       onChange={(e) =>
                         updateRow(
                           row.id,
