@@ -14,16 +14,225 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      content_previews: {
+        Row: {
+          badge: string | null
+          created_at: string
+          cta_label: string
+          cta_url: string
+          description: string | null
+          id: string
+          sort_order: number
+          thumbnail_url: string | null
+          title: string
+        }
+        Insert: {
+          badge?: string | null
+          created_at?: string
+          cta_label?: string
+          cta_url?: string
+          description?: string | null
+          id?: string
+          sort_order?: number
+          thumbnail_url?: string | null
+          title: string
+        }
+        Update: {
+          badge?: string | null
+          created_at?: string
+          cta_label?: string
+          cta_url?: string
+          description?: string | null
+          id?: string
+          sort_order?: number
+          thumbnail_url?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
+      creator_profile: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          engagement_rate: string
+          followers_count: string
+          hero_cta_label: string
+          hero_cta_url: string
+          id: string
+          name: string
+          show_content_access: boolean
+          show_offers: boolean
+          show_social_proof: boolean
+          tagline: string
+          total_fans: string
+          updated_at: string
+          verified: boolean
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          engagement_rate?: string
+          followers_count?: string
+          hero_cta_label?: string
+          hero_cta_url?: string
+          id?: string
+          name?: string
+          show_content_access?: boolean
+          show_offers?: boolean
+          show_social_proof?: boolean
+          tagline?: string
+          total_fans?: string
+          updated_at?: string
+          verified?: boolean
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          engagement_rate?: string
+          followers_count?: string
+          hero_cta_label?: string
+          hero_cta_url?: string
+          id?: string
+          name?: string
+          show_content_access?: boolean
+          show_offers?: boolean
+          show_social_proof?: boolean
+          tagline?: string
+          total_fans?: string
+          updated_at?: string
+          verified?: boolean
+        }
+        Relationships: []
+      }
+      offers: {
+        Row: {
+          active: boolean
+          created_at: string
+          cta_label: string
+          cta_url: string
+          description: string
+          icon: string
+          id: string
+          sort_order: number
+          title: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          cta_label?: string
+          cta_url?: string
+          description: string
+          icon?: string
+          id?: string
+          sort_order?: number
+          title: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          cta_label?: string
+          cta_url?: string
+          description?: string
+          icon?: string
+          id?: string
+          sort_order?: number
+          title?: string
+        }
+        Relationships: []
+      }
+      social_links: {
+        Row: {
+          created_at: string
+          id: string
+          platform: string
+          sort_order: number
+          url: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          platform: string
+          sort_order?: number
+          url: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          platform?: string
+          sort_order?: number
+          url?: string
+        }
+        Relationships: []
+      }
+      testimonials: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          handle: string | null
+          id: string
+          name: string
+          quote: string
+          sort_order: number
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          handle?: string | null
+          id?: string
+          name: string
+          quote: string
+          sort_order?: number
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          handle?: string | null
+          id?: string
+          name?: string
+          quote?: string
+          sort_order?: number
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +359,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+    },
   },
 } as const
