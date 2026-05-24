@@ -28,7 +28,7 @@ export function CrudManager<T extends { id: string }>({
 
   const load = async () => {
     const { data } = await supabase.from(table).select("*").order(orderBy);
-    setRows((data as T[]) ?? []);
+    setRows(((data ?? []) as unknown) as T[]);
   };
 
   useEffect(() => {
